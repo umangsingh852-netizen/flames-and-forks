@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Food | Flames & Forks</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Flames & Forks
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/admin">Admin Panel</a>
+            <a href="/menu">Menu</a>
+            <a href="/admin/orders">Orders</a>
+            <a href="/logout">Logout</a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="manage-food-page">
+
+        <div class="manage-food-header">
+
+            <h1>Manage Food</h1>
+
+            <p>
+                Add, edit, and remove items from your menu.
+            </p>
+
+            <a href="/add-food" class="btn">
+                + Add Food
+            </a>
+
+        </div>
+
+
+        <div class="food-table-container">
+
+            <table class="food-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Food</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for food in foods %}
+
+                    <tr>
+
+                        <td class="food-id">
+                            {{ food.food_id }}
+                        </td>
+
+                        <td class="food-name">
+                            {{ food.food_name }}
+                        </td>
+
+                        <td>
+                            <span class="category-badge">
+                                {{ food.category }}
+                            </span>
+                        </td>
+
+                        <td class="food-price">
+                            ₹{{ food.price }}
+                        </td>
+
+                        <td class="food-actions">
+
+                            <a href="/edit-food/{{ food.food_id }}"
+                               class="edit-btn">
+                                Edit
+                            </a>
+
+                            <a href="/delete-food/{{ food.food_id }}"
+                               class="delete-btn"
+                               onclick="return confirm('Are you sure you want to delete this food item?');">
+                                Delete
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Menu | Flames & Forks</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Flames & Forks
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+
+            <a href="/menu">Menu</a>
+
+            <a href="/orders">My Orders</a>
+
+            <a href="/cart">Cart</a>
+
+            <a href="/logout">Logout</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Menu -->
+
+    <main class="menu-page">
+
+        <div class="menu-header">
+
+            <h1>Our Menu</h1>
+
+            <p>
+                Explore our delicious selection
+            </p>
+
+        </div>
+
+
+        <div class="food-grid">
+
+            {% for item in food_items %}
+
+            <div class="food-card">
+
+    <div class="food-image">
+
+        {% if item.image %}
+
+            <img
+                src="{{ url_for('static', filename='images/' + item.image) }}"
+                alt="{{ item.food_name }}"
+            >
+
+        {% else %}
+
+            <div class="no-image">
+                No Image
+            </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <div class="food-content">
+
+                    <span class="food-category">
+                        {{ item.category }}
+                    </span>
+
+                    <h2>
+                        {{ item.food_name }}
+                    </h2>
+
+                    <p class="food-description">
+                        {{ item.description }}
+                    </p>
+
+                    <div class="food-bottom">
+
+                        <h3>
+                            ₹{{ item.price }}
+                        </h3>
+
+                        <a href="/add-to-cart/{{ item.food_id }}"
+                           class="add-cart-btn">
+                            Add to Cart
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </main>
+
+
+    {% if cart_count > 0 %}
+
+<div class="floating-cart-bar">
+
+    <div class="cart-info">
+
+        <span class="cart-icon">
+            🛒
+        </span>
+
+        <span>
+            {{ cart_count }}
+            {% if cart_count == 1 %}
+                item
+            {% else %}
+                items
+            {% endif %}
+            in your cart
+        </span>
+
+    </div>
+
+
+    <a href="/cart" class="floating-cart-btn">
+        Go to Cart →
+    </a>
+
+</div>
+
+{% endif %}
+</body>
+
+</html>

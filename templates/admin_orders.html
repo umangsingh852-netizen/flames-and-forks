@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Orders | Flames & Forks</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Flames & Forks
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/admin">Admin Panel</a>
+            <a href="/manage-food">Manage Food</a>
+            <a href="/admin/orders">Orders</a>
+            <a href="/menu">Menu</a>
+            <a href="/logout">Logout</a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="admin-orders-page">
+
+        <div class="admin-orders-header">
+
+            <h1>Manage Orders</h1>
+
+            <p>
+                View customer orders and update their status.
+            </p>
+
+        </div>
+
+
+        <div class="admin-orders-container">
+
+            {% if orders %}
+
+            <table class="admin-orders-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for order in orders %}
+
+                    <tr>
+
+                        <td class="admin-order-id">
+                            #{{ order.order_id }}
+                        </td>
+
+                        <td class="customer-name">
+                            {{ order.username }}
+                        </td>
+
+                        <td class="admin-order-total">
+                            ₹{{ order.total }}
+                        </td>
+
+                        <td>
+
+                            <span class="admin-status-badge">
+                                {{ order.status }}
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <a href="/update-order/{{ order.order_id }}"
+                               class="update-status-btn">
+
+                                Update Status
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            {% else %}
+
+            <div class="no-orders">
+
+                <h2>No Orders Yet</h2>
+
+                <p>
+                    There are currently no customer orders.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="admin-orders-back">
+
+            <a href="/admin" class="btn">
+                ← Back to Admin Dashboard
+            </a>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

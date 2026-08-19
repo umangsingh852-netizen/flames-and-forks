@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cart | Flames & Forks</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Flames & Forks
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+            <a href="/menu">Menu</a>
+            <a href="/orders">My Orders</a>
+            <a href="/cart">Cart</a>
+            <a href="/logout">Logout</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Cart -->
+
+    <main class="cart-page">
+
+        <div class="cart-header">
+
+            <h1>My Cart</h1>
+
+            <p>
+                Review your items before placing your order.
+            </p>
+
+        </div>
+
+
+        <div class="cart-container">
+
+            <table class="cart-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Food</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for item in cart_items %}
+
+                    <tr>
+
+                        <td class="cart-food">
+                            {{ item.food_name }}
+                        </td>
+
+                        <td>
+                            ₹{{ item.price }}
+                        </td>
+
+                        <td>
+                            {{ item.quantity }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+
+            <div class="cart-actions">
+
+                <a href="/menu" class="continue-btn">
+                    ← Continue Shopping
+                </a>
+
+                <a href="/place-order" class="place-order-btn">
+                    Place Order
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

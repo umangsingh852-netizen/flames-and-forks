@@ -1,0 +1,21 @@
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Flask
+instance/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Update Order | Flames & Forks</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Flames & Forks
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/admin">Admin Panel</a>
+            <a href="/manage-food">Manage Food</a>
+            <a href="/admin/orders">Orders</a>
+            <a href="/logout">Logout</a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="form-page">
+
+        <div class="form-card">
+
+            <h1>
+                Update Order #{{ order.order_id }}
+            </h1>
+
+            <p class="form-subtitle">
+                Change the delivery status of this order.
+            </p>
+
+
+            <div class="current-status">
+
+                <span>Current Status</span>
+
+                <strong>
+                    {{ order.status }}
+                </strong>
+
+            </div>
+
+
+            <form method="POST">
+
+                <div class="form-group">
+
+                    <label>Change Status</label>
+
+                    <select name="status" required>
+
+                        <option value="Preparing"
+                            {% if order.status == "Preparing" %}selected{% endif %}>
+                            Preparing
+                        </option>
+
+                        <option value="Out for Delivery"
+                            {% if order.status == "Out for Delivery" %}selected{% endif %}>
+                            Out for Delivery
+                        </option>
+
+                        <option value="Delivered"
+                            {% if order.status == "Delivered" %}selected{% endif %}>
+                            Delivered
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button type="submit" class="auth-btn">
+                    Update Status
+                </button>
+
+            </form>
+
+
+            <a href="/admin/orders" class="back-home">
+                ← Back to Orders
+            </a>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

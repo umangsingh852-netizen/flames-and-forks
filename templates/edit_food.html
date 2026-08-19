@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Food | Flames & Forks</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Flames & Forks
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/admin">Admin Panel</a>
+            <a href="/manage-food">Manage Food</a>
+            <a href="/admin/orders">Orders</a>
+            <a href="/logout">Logout</a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="form-page">
+
+        <div class="form-card">
+
+            <h1>Edit Food</h1>
+
+            <p class="form-subtitle">
+                Update the details of this menu item.
+            </p>
+
+
+            <form method="POST">
+
+                <div class="form-group">
+
+                    <label>Food Name</label>
+
+                    <input
+                        type="text"
+                        name="food_name"
+                        value="{{ food.food_name }}"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Category</label>
+
+                    <input
+                        type="text"
+                        name="category"
+                        value="{{ food.category }}"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Price</label>
+
+                    <input
+                        type="number"
+                        step="0.01"
+                        name="price"
+                        value="{{ food.price }}"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Description</label>
+
+                    <textarea
+                        name="description"
+                        rows="4">{{ food.description }}</textarea>
+
+                </div>
+
+
+                <button type="submit" class="auth-btn">
+                    Update Food
+                </button>
+
+            </form>
+
+
+            <a href="/manage-food" class="back-home">
+                ← Back to Manage Food
+            </a>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment | Flames & Forks</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Flames & Forks
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/menu">Menu</a>
+            <a href="/cart">Cart</a>
+            <a href="/orders">My Orders</a>
+            <a href="/logout">Logout</a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="payment-page">
+
+        <div class="payment-card">
+
+            <h1>Payment</h1>
+
+            <p class="payment-subtitle">
+                Choose your payment method
+            </p>
+
+
+            <div class="payment-total">
+
+                <span>Total Amount</span>
+
+                <strong>
+                    ₹{{ total }}
+                </strong>
+
+            </div>
+
+
+            <form method="POST">
+
+                <div class="payment-options">
+
+                    <label class="payment-option">
+
+                        <input
+                            type="radio"
+                            name="payment_method"
+                            value="UPI"
+                            required
+                        >
+
+                        <span>
+                            📱 UPI
+                        </span>
+
+                    </label>
+
+
+                    <label class="payment-option">
+
+                        <input
+                            type="radio"
+                            name="payment_method"
+                            value="Card"
+                        >
+
+                        <span>
+                            💳 Card
+                        </span>
+
+                    </label>
+
+
+                    <label class="payment-option">
+
+                        <input
+                            type="radio"
+                            name="payment_method"
+                            value="Cash on Delivery"
+                        >
+
+                        <span>
+                            💵 Cash on Delivery
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <button type="submit" class="auth-btn">
+                    Pay & Place Order
+                </button>
+
+            </form>
+
+
+            <a href="/cart" class="back-home">
+                ← Back to Cart
+            </a>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

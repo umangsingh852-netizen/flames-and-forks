@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Panel | Flames & Forks</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Flames & Forks
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/menu">Menu</a>
+            <a href="/admin">Admin Panel</a>
+            <a href="/logout">Logout</a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="admin-page">
+
+        <section class="admin-header">
+
+            <h1>Admin Panel</h1>
+
+            <p>
+                Manage your restaurant from one place.
+            </p>
+
+        </section>
+
+
+        <section class="admin-grid">
+
+            <a href="/add-food" class="admin-card">
+
+                <div class="admin-icon">
+                    ➕
+                </div>
+
+                <h2>Add Food</h2>
+
+                <p>
+                    Add new dishes to the menu.
+                </p>
+
+            </a>
+
+
+            <a href="/manage-food" class="admin-card">
+
+                <div class="admin-icon">
+                    🍔
+                </div>
+
+                <h2>Manage Food</h2>
+
+                <p>
+                    Edit or remove existing food items.
+                </p>
+
+            </a>
+
+
+            <a href="/admin/orders" class="admin-card">
+
+                <div class="admin-icon">
+                    📦
+                </div>
+
+                <h2>Manage Orders</h2>
+
+                <p>
+                    View customer orders and update their status.
+                </p>
+
+            </a>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

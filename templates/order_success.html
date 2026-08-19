@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Confirmed | Flames & Forks</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Flames & Forks
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/menu">Menu</a>
+            <a href="/orders">My Orders</a>
+            <a href="/logout">Logout</a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="success-page">
+
+        <div class="success-card">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h1>
+                Order Placed!
+            </h1>
+
+            <p class="success-message">
+                Your order has been successfully placed.
+            </p>
+
+
+            <div class="order-details">
+
+                <div class="detail-row">
+
+                    <span>Order ID</span>
+
+                    <strong>
+                        #{{ order_id }}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>Total Amount</span>
+
+                    <strong>
+                        ₹{{ "%.2f"|format(total) }}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>Payment Method</span>
+
+                    <strong>
+                        {{ payment_method }}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>Status</span>
+
+                    <strong class="status">
+                        Preparing
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="success-actions">
+
+                <a href="/orders" class="auth-btn">
+                    View My Orders
+                </a>
+
+                <a href="/menu" class="back-home">
+                    Continue Shopping
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>
